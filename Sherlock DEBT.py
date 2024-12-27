@@ -6,6 +6,7 @@ import os
 import webbrowser
 from tkinter import ttk
 from tkinter import messagebox
+import subprocess
 
 #customisation et debut de la boucle.
 Sherlock_DEBT = Tk()
@@ -27,7 +28,7 @@ Bouton_exit=Button(text="Stop-Code", command=quit)
 Bouton_exit.pack
 Bouton_exit.grid(row=0 , column=1)
 
-Bouton_SALVAC=Button(text="SALVAC")#, comand=open_SALVAC
+Bouton_SALVAC=Button(text="SALVAC")#, comand=open_SALVAC    1
 Bouton_SALVAC.pack
 Bouton_SALVAC.grid(row=0 , column=2)
 
@@ -71,9 +72,13 @@ Bouton_CADASTRE=Button(text="CADASTRE")
 Bouton_CADASTRE.pack
 Bouton_CADASTRE.grid(row=0, column=11)
 
-Bouton_WMN=Button(text="WMN")
-Bouton_WMN.pack
-Bouton_WMN.grid(row=1, column=1)
+def ouvrir_osint():
+    # Remplacez 'mon_script.py' par le chemin de votre fichier Python
+    subprocess.run(['python', 'osint.py'])
+
+Bouton_OSINT=Button(text="OSINT", command=ouvrir_osint)
+Bouton_OSINT.pack
+Bouton_OSINT.grid(row=0, column=12)
 
 # Vocal stt
 #MARINS Cannal

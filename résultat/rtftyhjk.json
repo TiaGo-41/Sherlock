@@ -1,8 +1,15 @@
 {
+    "whois": {
+        "domain": "instagrame",
+        "registrar": "Example Registrar",
+        "creation_date": "2023-01-01",
+        "expiry_date": "2024-01-01",
+        "status": "active"
+    },
     "social_media": {
-        "twitter": "https://twitter.com/harry4129",
-        "github": "https://github.com/harry4129",
-        "linkedin": "https://www.linkedin.com/in/harry4129",
-        "instagram": "https://www.instagram.com/harry4129/"
+        "twitter": "https://twitter.com/harry4129, t-rex41",
+        "github": "https://github.com/harry4129, t-rex41",
+        "linkedin": "https://www.linkedin.com/in/harry4129, t-rex41",
+        "instagram": "https://www.instagram.com/harry4129, t-rex41/"
     }
 }
