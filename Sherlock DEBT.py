@@ -71,6 +71,10 @@ Bouton_CADASTRE=Button(text="CADASTRE")
 Bouton_CADASTRE.pack
 Bouton_CADASTRE.grid(row=0, column=11)
 
+Bouton_WMN=Button(text="WMN")
+Bouton_WMN.pack
+Bouton_WMN.grid(row=1, column=1)
+
 # Vocal stt
 #MARINS Cannal
 #CADASTRE
