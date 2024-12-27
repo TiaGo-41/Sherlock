@@ -2,6 +2,7 @@ import requests
 import argparse
 import json
 from datetime import datetime
+from tkinter import Tk, Label, Button, Entry, StringVar, filedialog, messagebox
 
 class OSINTFramework:
     def __init__(self):
@@ -9,9 +10,7 @@ class OSINTFramework:
 
     def collect_whois(self, domain):
         print(f"Collecting WHOIS information for: {domain}")
-        # Exemple de collecte WHOIS (utilisez une API tierce comme whoisxmlapi ou des bibliothèques comme python-whois)
         try:
-            # Replace with actual WHOIS API or library usage
             self.results['whois'] = {
                 "domain": domain,
                 "registrar": "Example Registrar",
@@ -58,8 +57,54 @@ class OSINTFramework:
         for key, value in self.results.items():
             print(f"{key.upper()}: {json.dumps(value, indent=4)}")
 
+def gui_interface():
+    def run_analysis():
+        domain = domain_var.get()
+        ip = ip_var.get()
+        username = username_var.get()
+        output_file = filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("JSON files", "*.json")])
+
+        if not (domain or ip or username):
+            messagebox.showwarning("Input Error", "Please provide at least one input (domain, IP, or username).")
+            return
+
+        osint = OSINTFramework()
+
+        if domain:
+            osint.collect_whois(domain)
+
+        if ip:
+            osint.collect_ip_info(ip)
+
+        if username:
+            osint.collect_social_media(username)
+
+        if output_file:
+            osint.save_results(output_file)
+            messagebox.showinfo("Success", f"Results saved to {output_file}")
+
+    root = Tk()
+    root.title("OSINT Framework")
+
+    Label(root, text="Domain:").grid(row=0, column=0, padx=10, pady=5, sticky="w")
+    domain_var = StringVar()
+    Entry(root, textvariable=domain_var).grid(row=0, column=1, padx=10, pady=5)
+
+    Label(root, text="IP Address:").grid(row=1, column=0, padx=10, pady=5, sticky="w")
+    ip_var = StringVar()
+    Entry(root, textvariable=ip_var).grid(row=1, column=1, padx=10, pady=5)
+
+    Label(root, text="Social Media Username:").grid(row=2, column=0, padx=10, pady=5, sticky="w")
+    username_var = StringVar()
+    Entry(root, textvariable=username_var).grid(row=2, column=1, padx=10, pady=5)
+
+    Button(root, text="Run Analysis", command=run_analysis).grid(row=3, column=0, columnspan=2, pady=10)
+
+    root.mainloop()
+
 def main():
     parser = argparse.ArgumentParser(description="OSINT Framework in Python")
+    parser.add_argument("--gui", action="store_true", help="Launch the GUI interface")
     parser.add_argument("--domain", help="Domain name to analyze")
     parser.add_argument("--ip", help="IP address to analyze")
     parser.add_argument("--username", help="Social media username to analyze")
@@ -67,6 +112,12 @@ def main():
 
     args = parser.parse_args()
 
+    # If no arguments are passed, launch the GUI by default
+    if len(vars(args)) == 1 or args.gui:  # len(vars(args)) == 1 checks if no arguments except --gui
+        gui_interface()
+        return
+
+    # CLI functionality
     osint = OSINTFramework()
 
     if args.domain:
