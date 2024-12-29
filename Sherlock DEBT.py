@@ -80,6 +80,14 @@ Bouton_OSINT=Button(text="OSINT", command=ouvrir_osint)
 Bouton_OSINT.pack
 Bouton_OSINT.grid(row=0, column=12)
 
+def ouvrir_info():
+    # Remplacez 'mon_script.py' par le chemin de votre fichier Python
+    subprocess.run(['python', 'info.py'])
+
+Bouton_OSINT=Button(text="♦", command=ouvrir_info)
+Bouton_OSINT.pack
+Bouton_OSINT.grid(row=0, column=20)
+
 # Vocal stt
 #MARINS Cannal
 #CADASTRE
