@@ -1,1 +1,15 @@
-Ouvrir APP.PY pour se connecter
+Ouvrir APP.PY pour se connecter et accéder a sherlock
+---
+1-Le Compte
+2-L'interface
+  a- Les boutons :
+	Stop-Code : Ce bouton sert a arreté proprement le code avec 
+	une déconexion automatique.
+	Fichier : accéder au fichier d'une enquette ou d'une personne
+	♦/Aide : accéder à la page d'aide -> utiliser le bouton 
+	charger 	le fichier pour afficher l'aide.
+3-Les outils
+  a-
+  b-
+  c-
+
